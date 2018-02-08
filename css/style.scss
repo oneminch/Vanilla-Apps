@@ -196,6 +196,7 @@ body, html {
 }
 // Main Body containing news
 .main-body {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: minmax(75px,auto);
@@ -238,7 +239,7 @@ body, html {
     // Featured Article
     .featured {
         width: 100%;
-        min-width: 400px;
+        min-width: 325px;
         min-height: 275px;
         background: #000;
         border-radius: 5px;
