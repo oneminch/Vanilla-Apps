@@ -4,12 +4,10 @@
   -ms-appearance: none !important;
   -o-appearance: none !important;
   outline: none !important;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  transition: 0.2s;
-  -o-transition: 0.2s;
-  -moz-transition: 0.2s;
-  -webkit-transition: 0.2s;
+  transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
   font-family: 'Quicksand', sans-serif; }
 
 a {
@@ -72,7 +70,6 @@ body, html {
   .header-container .tag-arrow {
     transform: rotate(45deg);
     -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     display: block;
@@ -150,7 +147,6 @@ body, html {
 .collapse-tags .tags {
   transform: scaleY(0);
   -o-transform: scaleY(0);
-  -ms-transform: scaleY(0);
   -moz-transform: scaleY(0);
   -webkit-transform: scaleY(0); }
 
@@ -158,6 +154,78 @@ body, html {
   width: 0px;
   height: 0px;
   border: none; }
+
+.bookmarks-list {
+  width: 300px;
+  min-height: 150px;
+  max-height: 400px;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin: -20px 5px;
+  float: right;
+  position: relative;
+  z-index: 3;
+  clear: both;
+  box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  transform-style: preserve-3d;
+  transform: perspective(300px) rotateX(5deg) translateY(50px);
+  visibility: hidden;
+  opacity: 0;
+  transform-origin: top;
+  transition: visibility 0s, opacity 0.2s ease-in, transform 0.3s ease-in-out; }
+  .bookmarks-list > * {
+    background: none; }
+  .bookmarks-list::-webkit-scrollbar {
+    width: 5px; }
+  .bookmarks-list::-webkit-scrollbar-track {
+    box-shadow: none;
+    -o-box-shadow: none;
+    -ms-box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    background: #fff;
+    border-radius: 6px; }
+  .bookmarks-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 5px; }
+  .bookmarks-list .bookmarked-article {
+    width: 90%;
+    min-height: 120px;
+    margin: 0px auto;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 5px 5px 0px; }
+    .bookmarks-list .bookmarked-article:last-of-type {
+      border-bottom: none; }
+    .bookmarks-list .bookmarked-article .bookmarked-article-info {
+      min-height: 70px; }
+      .bookmarks-list .bookmarked-article .bookmarked-article-info .bookmarked-article-title {
+        display: block;
+        color: #000 !important;
+        margin: 0px 0px 5px 0px;
+        font-weight: bold; }
+      .bookmarks-list .bookmarked-article .bookmarked-article-info .bookmarked-article-source {
+        display: inline-block;
+        color: #000;
+        margin: 5px 0px;
+        font-size: 13px; }
+    .bookmarks-list .bookmarked-article .buttons {
+      width: 100%;
+      text-align: right;
+      height: 30px; }
+      .bookmarks-list .bookmarked-article .buttons .bookmarked-article-buttons {
+        display: inline-block;
+        margin: 0px 7.5px;
+        line-height: 30px;
+        text-align: right;
+        font-size: 22px;
+        cursor: pointer; }
+
+.open-bookmarks-list {
+  transform: rotateX(0deg) translateY(0px);
+  visibility: visible;
+  opacity: 1; }
 
 .main-body {
   width: 100%;
@@ -171,7 +239,7 @@ body, html {
 
 .daily-info {
   width: 100%;
-  height: 140px;
+  height: 80px;
   background: #fff;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -181,12 +249,12 @@ body, html {
   padding: 10px; }
   .daily-info .weather {
     width: 90%;
-    height: 60px;
+    height: 0px;
     padding: 0px 5px;
     line-height: 60px;
     font-size: 25px;
     margin: 0px auto;
-    border-bottom: 1px solid #ccc; }
+    border-bottom: none; }
   .daily-info .date {
     width: 90%;
     height: 60px;

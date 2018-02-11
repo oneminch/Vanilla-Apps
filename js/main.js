@@ -1,18 +1,20 @@
-const showTagBtn = document.querySelector('.show-tags');
-const tagContainer = document.querySelector('.tags');
-const tags = tagContainer.querySelectorAll('.tag');
-const mainBody = document.querySelector('.main-body');
-const date = document.querySelector('.date');
-const dailyInfo = document.querySelector('.daily-info');
-const weather = document.querySelector('.weather');
-const temperature = document.querySelector('.temperature');
-const weatherStatus = document.querySelector('.status');
+const showTagBtn = document.querySelector('.show-tags');     // Show tags button
+const tagContainer = document.querySelector('.tags');        // Container of tags
+const tags = tagContainer.querySelectorAll('.tag');          // Each tag
+const refresh = document.querySelector('.refresh');          // Refresh page button
+const bookmarks = document.querySelector('.bookmarks');      // Show bookmarks button
+const bookmarkList = document.querySelector('.bookmarks-list');      // Bookmarks container
+const mainBody = document.querySelector('.main-body');       // Main body: Date & Articles
+const dailyInfo = document.querySelector('.daily-info');     // Daily Info: Date and weather
+const date = document.querySelector('.date');                // Date
+const weather = document.querySelector('.weather');          // Weather
+const temperature = document.querySelector('.temperature');  // Temperature
+const weatherStatus = document.querySelector('.status');     // Weather Status
 
 // Main Articles: Featured and others with image
 const mainArticles = document.querySelector('.main-articles');
 // Imageless Articles
 const imglessArticles = document.querySelector('.imageless-articles');
-
 
 // Date
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];       // Name of days
@@ -28,17 +30,44 @@ year = year.toString();
 // Display date
 date.innerHTML = `${day} <br> ${month} ${today}, ${year}`;
 
+// Fetch news on load
+fetchNews();
+
+// Expands and collpases tags
+showTagBtn.addEventListener('click',function() {
+   document.body.classList.toggle('collapse-tags');
+   const rect = mainBody.getBoundingClientRect();
+   mainBody.style.transform = `translateY(-${rect.top - 60}px)`;
+});
+
+bookmarks.addEventListener('click', () => {
+   bookmarkList.classList.toggle('open-bookmarks-list');
+});
+
+// Fetch news with tag name
+tags.forEach(tag => tag.addEventListener('click', () => {
+   // Get current tag name
+   const tagName = tag.dataset.tag;
+   // Clear any current active tag property
+   for (let i = 0; i < tags.length; i++) {
+      tags[i].style.fontWeight = "normal";
+   }
+   // Assign active property to clicked tag
+   tag.style.fontWeight = "bolder";
+   // Fetch news with clicked tag name
+   fetchNews(tagName);
+}));
 
 // Check if Geolocation is allowed or blocked for weather
 if (navigator.geolocation) {
    navigator.geolocation.getCurrentPosition(success,fail);
 }
 
-// Fetch news on load
-fetchNews();
-
 // Fetch weather if Geolocation is successful
 function success(position) {
+   dailyInfo.style.height = '140px';
+   weather.style.borderBottom = '1px solid #ccc';
+   weather.style.height = '60px';
    // API URL
    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=0036c88f0dd7246332045207bf44130f&units=metric`;
    // Get Weather Data in JSON Format
@@ -77,27 +106,6 @@ function fail(error) {
    // Don't display anything
    console.log(error);
 }
-
-// Expands and collpases tags
-showTagBtn.addEventListener('click',function() {
-   document.body.classList.toggle('collapse-tags');
-   const rect = mainBody.getBoundingClientRect();
-   mainBody.style.transform = `translateY(-${rect.top - 60}px)`;
-});
-
-// Fetch news with tag name
-tags.forEach(tag => tag.addEventListener('click', () => {
-   // Get current tag name
-   const tagName = tag.dataset.tag;
-   // Clear any current active tag property
-   for (let i = 0; i < tags.length; i++) {
-      tags[i].style.fontWeight = "normal";
-   }
-   // Assign active property to clicked tag
-   tag.style.fontWeight = "bolder";
-   // Fetch news with clicked tag name
-   fetchNews(tagName);
-}));
 
 // Fetch news
 function fetchNews(tagName) {
@@ -275,9 +283,10 @@ function fetchNews(tagName) {
       },
       fail: (error) => {
          console.log(error);
-         const errMsg = "<h2>Sorry, something went wrong!</h2>";
-         mainArticles.style.height = '75px';
-         mainArticles.appendChild(errMsg);
+         // const errMsg = "<h2>Sorry, something went wrong!</h2>";
+         // mainArticles.style.height = '75px';
+         // mainArticles.appendChild(errMsg);
+         mainArticles.innerHTML = error;
       }
    });  
 }
