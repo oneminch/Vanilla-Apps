@@ -408,13 +408,14 @@ body, html {
     padding: 0px 10px 15px 10px; }
 
   .daily-info {
-    height: 80px;
+    height: 80px !important;
     margin: 10px 0px 10px 0px; }
     .daily-info .weather {
       width: 50%;
+      height: 100% !important;
       float: right;
       text-align: right;
-      border-bottom: none; }
+      border-bottom: none !important; }
     .daily-info .date {
       width: 50%;
       float: left; }

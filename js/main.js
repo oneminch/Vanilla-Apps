@@ -65,9 +65,11 @@ if (navigator.geolocation) {
 
 // Fetch weather if Geolocation is successful
 function success(position) {
-   dailyInfo.style.height = '140px';
-   weather.style.borderBottom = '1px solid #ccc';
-   weather.style.height = '60px';
+   // if (window.innerWidth > 876) {
+      dailyInfo.style.height = '140px';
+      weather.style.borderBottom = '1px solid #ccc';
+      weather.style.height = '60px';
+   // }
    // API URL
    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=0036c88f0dd7246332045207bf44130f&units=metric`;
    // Get Weather Data in JSON Format

@@ -499,13 +499,14 @@ body, html {
     }
     // Daily Info: Date and Weather
     .daily-info {
-        height: 80px;
+        height: 80px !important;
         margin: 10px 0px 10px 0px;
         .weather {
             width: 50%;
+            height: 100% !important;
             float: right;
             text-align: right;
-            border-bottom: none;
+            border-bottom: none !important;
         }
         .date {
             width: 50%;
