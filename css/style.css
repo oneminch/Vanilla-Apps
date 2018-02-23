@@ -40,6 +40,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 5px; }
 
 body, html {
+  width: 100%;
   min-height: 100%;
   padding: 0; }
 
@@ -157,24 +158,24 @@ body, html {
 
 .bookmarks-list {
   width: 300px;
-  min-height: 150px;
+  min-height: 75px;
   max-height: 400px;
   background: #fff;
   border-radius: 4px;
   border: 1px solid #ccc;
   margin: -20px 5px;
   float: right;
-  position: relative;
+  position: absolute;
   z-index: 3;
   clear: both;
   box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.1);
   overflow: auto;
   transform-style: preserve-3d;
-  transform: perspective(300px) rotateX(5deg) translateY(50px);
+  transform: perspective(300px) rotateX(7deg);
   visibility: hidden;
   opacity: 0;
   transform-origin: top;
-  transition: visibility 0s, opacity 0.2s ease-in, transform 0.3s ease-in-out; }
+  transition: visibility 0s, opacity 0.1s ease-in, 0.3s, transform 0.3s ease-in-out; }
   .bookmarks-list > * {
     background: none; }
   .bookmarks-list::-webkit-scrollbar {
@@ -194,6 +195,7 @@ body, html {
     width: 90%;
     min-height: 120px;
     margin: 0px auto;
+    text-align: left;
     border-bottom: 1px solid #ccc;
     padding: 15px 5px 5px 0px; }
     .bookmarks-list .bookmarked-article:last-of-type {
@@ -223,7 +225,7 @@ body, html {
         cursor: pointer; }
 
 .open-bookmarks-list {
-  transform: rotateX(0deg) translateY(0px);
+  transform: rotateX(0deg);
   visibility: visible;
   opacity: 1; }
 
@@ -231,11 +233,15 @@ body, html {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: minmax(75px, auto);
+  grid-template-rows: 125px;
   grid-gap: 15px;
   padding: 0px 25px 25px 25px;
   max-width: 1256px;
   margin: 0px auto; }
+
+.info-key-wrapper {
+  width: 100%;
+  margin: 5px auto 10px auto; }
 
 .daily-info {
   width: 100%;
@@ -243,7 +249,7 @@ body, html {
   background: #fff;
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin: 10px auto;
+  margin: 0px auto 15px auto;
   overflow: hidden;
   color: #000;
   padding: 10px; }
@@ -261,6 +267,48 @@ body, html {
     text-align: left;
     margin: 0% auto;
     padding: 10px 5px; }
+
+.keys {
+  width: 100%;
+  min-height: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  transform-origin: top;
+  margin: 5px auto 0px auto;
+  overflow: hidden;
+  z-index: 1;
+  align-items: center; }
+  .keys .key {
+    min-height: 30px;
+    max-width: 110px;
+    line-height: 30px;
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    border-radius: 5px;
+    margin: 3px;
+    padding: 0px 10px;
+    font-size: 12px;
+    color: #fff; }
+  .keys [data-key="Apple"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 50%), url("../media/apple.jpg"); }
+  .keys [data-key="Google"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 50%), url("../media/google.jpg"); }
+  .keys [data-key="Architecture"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 50%), url("../media/architecture.jpg"); }
+  .keys [data-key="Cryptocurrency"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 50%), url("../media/cryptocurrency.jpg"); }
+  .keys [data-key="Design"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 50%), url("../media/design.jpg"); }
+  .keys [data-key="Programming"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 50%), url("../media/programming.jpg"); }
+  .keys [data-key="Photography"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 50%), url("../media/photography.jpg"); }
 
 .main-articles {
   width: 100%; }
@@ -369,7 +417,7 @@ body, html {
     min-height: 120px;
     margin: 0px auto;
     border-bottom: 1px solid #ccc;
-    padding: 15px 5px 5px 0px; }
+    padding: 15px 5px 10px 0px; }
     .imageless-articles .imageless-article:last-of-type {
       border-bottom: none; }
     .imageless-articles .imageless-article .imageless-article-info {
@@ -403,13 +451,17 @@ body, html {
 @media only screen and (max-width: 876px) {
   .main-body {
     grid-template-columns: 1fr;
-    grid-template-rows: 80px auto auto;
+    grid-template-rows: minmax(135px, auto) auto auto;
     grid-gap: 7.5px;
     padding: 0px 10px 15px 10px; }
 
+  .info-key-wrapper {
+    width: 100%;
+    margin: 5px auto 0px auto; }
+
   .daily-info {
     height: 80px !important;
-    margin: 10px 0px 10px 0px; }
+    margin-bottom: 5px; }
     .daily-info .weather {
       width: 50%;
       height: 100% !important;
@@ -421,7 +473,7 @@ body, html {
       float: left; }
 
   .main-articles {
-    margin: 10px 0px 0px 0px; }
+    margin: 0px; }
     .main-articles .articles {
       margin: 0px; }
 
