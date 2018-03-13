@@ -48,22 +48,24 @@ i, #logo {
     -ms-user-select: none;
     user-select: none;
 }
-// Body Custom scrollbar
-body::-webkit-scrollbar {
-    width: 5px;
-}
-body::-webkit-scrollbar-track {
-    @include box-shadow(none);
-    background: #fff;
-}
-body::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 5px;
-}
 body, html {
-    width: 100%;
-    min-height: 100%;
-    padding: 0;
+	width: 100%;
+	min-height: 100%;
+	padding: 0;
+}
+// Body Custom scrollbar
+body {
+	&::-webkit-scrollbar {
+		width: 5px;
+	}
+	&::-webkit-scrollbar-track {
+		@include box-shadow(none);
+		background: #fff;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: #ccc;
+		border-radius: 5px;
+   }
 }
 // Main header with logo and buttons
 .header-container {
@@ -343,7 +345,7 @@ body, html {
         background-size: cover !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
-        border-radius: 5px;
+        border-radius: 15px;
         margin: 3px;
         padding: 0px 10px;
         font-size: 12px;
@@ -355,20 +357,14 @@ body, html {
     [data-key="Google"] {
         background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5) 50%), url("../media/google.jpg");
     }
-    [data-key="Architecture"] {
-        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5) 50%), url("../media/architecture.jpg");
+    [data-key="Stock"] {
+        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5) 50%), url("../media/stock.jpg");
     }
     [data-key="Cryptocurrency"] {
         background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5) 50%), url("../media/cryptocurrency.jpg");
     }
-    [data-key="Design"] {
-        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5) 50%), url("../media/design.jpg");
-    }
-    [data-key="Programming"] {
-        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5) 50%), url("../media/programming.jpg");
-    }
-    [data-key="Photography"] {
-        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5) 50%), url("../media/photography.jpg");
+    [data-key="Music"] {
+        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5) 50%), url("../media/music.jpg");
     }
 }
 // Main articles
@@ -383,7 +379,7 @@ body, html {
         border-radius: 5px;
         overflow: hidden;
         color: #fff;
-        margin: 10px auto;
+        margin: 5px auto 10px auto;
         padding: 20px 20px 10px 20px;
         display: flex;
         align-items: flex-end;
@@ -429,7 +425,7 @@ body, html {
     // Articles
     .articles {
         width: 100%;
-        min-height: 300px;
+        min-height: 125px;
         background: #fff;
         border-radius: 5px;
         border: 1px solid #ccc;
@@ -496,7 +492,6 @@ body, html {
     width: 100%;
     background: #fff;
     border-radius: 5px;
-    border: 1px solid #ccc;
     margin: 10px auto;
     // Each article
     .imageless-article {
