@@ -47,8 +47,6 @@ function success(position) {
    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=0036c88f0dd7246332045207bf44130f&units=metric`;
    // Get Weather Data in JSON Format
    $.getJSON(url,function(data) {
-      console.log(data);
-      
       // Get Temperature in Celcius
       let celcius = data.main.temp;
       celcius = celcius.toFixed(1);
