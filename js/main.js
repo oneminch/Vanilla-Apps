@@ -44,7 +44,7 @@ function success(position) {
       weather.style.height = '60px';
    // }
    // API URL
-   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=0036c88f0dd7246332045207bf44130f&units=metric`;
+   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=838c40c1697a6962c93f9b7a77acbe0c&units=metric`;
    // Get Weather Data in JSON Format
    $.getJSON(url,function(data) {
       // Get Temperature in Celcius
