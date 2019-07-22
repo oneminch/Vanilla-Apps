@@ -44,7 +44,8 @@ function success(position) {
       weather.style.height = '60px';
    // }
    // API URL
-   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=838c40c1697a6962c93f9b7a77acbe0c&units=metric`;
+   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=4c66a8722ea8e291025b11771b711d67
+&units=metric`;
    // Get Weather Data in JSON Format
    $.getJSON(url,function(data) {
       // Get Temperature in Celcius
@@ -237,7 +238,7 @@ function fetchNews(tagName, keyName) {
 	else
 		query = `q=${keyName}`;
    // URL to be sent 
-	const newsUrl = `https://newsapi.org/v2/top-headlines?language=en&${query}&apiKey=a30e1995b1c948fca82a16cf20634584`;
+	const newsUrl = `https://newsapi.org/v2/top-headlines?language=en&${query}&apiKey=a9ec67b4e33840d1982d95610c5e4c45`;
 
    // Articles array
    let articles = [];
