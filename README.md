@@ -1,4 +1,5 @@
 # News
 A news app that uses the Google News API
 
-[Go to the app](oneminch.github.io/Newsfeed)
+[Go to the app](https://oneminch.github.io/Newsfeed)
+
