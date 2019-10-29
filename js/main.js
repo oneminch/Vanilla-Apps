@@ -251,6 +251,7 @@ function fetchNews(tagName, keyName) {
 				// Empty article containers for new request
 				mainArticles.innerHTML = '';
 				imglessArticles.innerHTML = ''; 
+				console.log(data);
 				// Copy articles from response to custom array
 				for (let i = 0; i < data.totalResults; i++) {
 					articles.push(data.articles[i]);
