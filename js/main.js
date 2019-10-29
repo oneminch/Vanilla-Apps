@@ -311,8 +311,10 @@ function fetchNews(tagName, keyName) {
 				// Create container of articles with image
 				const articlesContainer = document.createElement('div');
 				articlesContainer.classList.add('articles');
-
+				console.log(articles);
+				
 				articles.forEach(function(article) {
+					console.log(article);
 					if (article.urlToImage != null && article.source.name != "Fox News") {   
 						// IF IMAGE EXISTS FOR ARTICLE
 						// Create article item            
