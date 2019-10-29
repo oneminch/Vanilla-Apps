@@ -1,3 +1,5 @@
+feather.replace(); // To load icons from CDN
+
 const showTagBtn = document.querySelector('.show-tags');     // Show tags button
 const tags = document.querySelectorAll('.tag');          // Each tag
 const keys = document.querySelectorAll('.key');          // Each key
@@ -54,21 +56,21 @@ function success(position) {
 
       // Updates weather status icon and temperature
       if (data.weather[0].id >= 200 && data.weather[0].id <= 232) {
-         weather.innerHTML =  `<i class="ion-ios-thunderstorm-outline"></i>      ${celcius}&deg;C`;
+         weather.innerHTML =  `<i data-feather="cloud-lightning"></i>      ${celcius}&deg;C`;
       } else if ((data.weather[0].id >= 300 && data.weather[0].id <= 321) || (data.weather[0].id >= 500 && data.weather[0].id <= 531)) {
-         weather.innerHTML =  `<i class="ion-ios-rainy-outline"></i>      ${celcius}&deg;C`;
+         weather.innerHTML =  `<i data-feather="cloud-rain"></i>      ${celcius}&deg;C`;
       } else if (data.weather[0].id >= 600 && data.weather[0].id <= 622) {
-         weather.innerHTML =  `<i class="ion-ios-snowy"></i>      ${celcius}&deg;C`;
+         weather.innerHTML =  `<i data-feather="cloud-snow"></i>      ${celcius}&deg;C`;
       } else if ((data.weather[0].id >= 701 && data.weather[0].id <= 781) || (data.weather[0].id >= 951 && data.weather[0].id <= 962)) {
-         weather.innerHTML =  `<i class="ion-ios-rainy-outline"></i>      ${celcius}&deg;C`;
+         weather.innerHTML =  `<i data-feather="cloud-rain"></i>      ${celcius}&deg;C`;
       } else if (data.weather[0].id == 800) {
-         weather.innerHTML =  `<i class="ion-ios-sunny-outline"></i>      ${celcius}&deg;C`;
+         weather.innerHTML =  `<i data-feather="sun"></i>      ${celcius}&deg;C`;
       } else if (data.weather[0].id == 801) {
-         weather.innerHTML =  `<i class="ion-ios-partlysunny-outline"></i>      ${celcius}&deg;C`;
+         weather.innerHTML =  `<i data-feather="cloud"></i>      ${celcius}&deg;C`;
       } else if (data.weather[0].id >= 802 && data.weather[0].id <= 804) {
-         weather.innerHTML =  `<i class="ion-ios-cloudy-outline"></i>      ${celcius}&deg;C`;
+         weather.innerHTML =  `<i data-feather="cloud"></i>      ${celcius}&deg;C`;
       } else if (data.weather[0].id == 906) {
-         weather.innerHTML =  `<i class="ion-ios-snowy"></i>      ${celcius}&deg;C`;
+         weather.innerHTML =  `<i data-feather="cloud-snow"></i>      ${celcius}&deg;C`;
       } else {
          weather.innerHTML =  `${celcius}&deg;C`;
       }
@@ -131,7 +133,8 @@ function saveBookmarks(title,source,url) {
 			artclURL: url,
 			artclID: -1
 		};
-
+		feather.replace(); // To load icons from CDN
+		
 		bookmarks = getSavedBookmarks();
 		bookmark.artclID = bookmarks.length + 1;
 		bookmarks.push(bookmark);
@@ -213,9 +216,9 @@ function populateBookmarks(title,source,url, id = -1) {
 	// Create delete button and attach function to it
 	const bookmarkDelete = document.createElement('div');
 	bookmarkDelete.classList.add('bookmarked-article-buttons','delete');
-	bookmarkDelete.innerHTML = '<i class="ion-trash-a"></i>';
+	bookmarkDelete.innerHTML = '<i data-feather="trash-2"></i>';
 	bookmarkDelete.addEventListener('click', deleteBookmarks);
-
+	
 	// Append Delete button to button container
 	bookmarkButtons.appendChild(bookmarkDelete);
 	// Append title and source to info container
@@ -226,10 +229,10 @@ function populateBookmarks(title,source,url, id = -1) {
 	bookmarkItem.appendChild(bookmarkButtons);
 	// Append article to list
 	bookmarkList.appendChild(bookmarkItem);
+	feather.replace(); // To load icons from CDN
 }
 // Fetch news
 function fetchNews(tagName, keyName) {
-      
    let query;
 
 	// Assign tag name
@@ -250,8 +253,8 @@ function fetchNews(tagName, keyName) {
 				let data = JSON.parse(this.responseText);
 				// Empty article containers for new request
 				mainArticles.innerHTML = '';
-				imglessArticles.innerHTML = ''; 
-				console.log(data);
+				imglessArticles.innerHTML = '';
+
 				// Copy articles from response to custom array
 				for (let i = 0; i < data.totalResults; i++) {
 					articles.push(data.articles[i]);
@@ -283,7 +286,8 @@ function fetchNews(tagName, keyName) {
 						// Create featured bookmark button
 						const featuredBookmark = document.createElement('div');
 						featuredBookmark.classList.add('featured-buttons','bookmark');
-						featuredBookmark.innerHTML = '<i class="ion-android-bookmark"></i>';
+						featuredBookmark.innerHTML = '<i data-feather="bookmark"></i>';
+
 						featuredBookmark.addEventListener('click', function() {
 							const title = featuredTitle.textContent;
 							const source = featuredSource.textContent;
@@ -293,6 +297,7 @@ function fetchNews(tagName, keyName) {
 								populateBookmarks(title,source,url);
 							}						
 						});
+
 						// Append content to info section
 						featuredInfo.appendChild(featuredLabel);
 						featuredInfo.appendChild(featuredTitle);
@@ -311,130 +316,136 @@ function fetchNews(tagName, keyName) {
 				// Create container of articles with image
 				const articlesContainer = document.createElement('div');
 				articlesContainer.classList.add('articles');
-				console.log(articles);
 				
 				articles.forEach(function(article) {
-					console.log(article);
-					if (article.urlToImage != null && article.source.name != "Fox News") {   
-						// IF IMAGE EXISTS FOR ARTICLE
-						// Create article item            
-						const articleItem = document.createElement('div');
-						articleItem.classList.add('article');
-						// Create image container and add image
-						const articleImage = document.createElement('div');
-						articleImage.classList.add('image');
-						articleImage.style.backgroundImage = `url('${article.urlToImage}')`;
-						// Create info container: title and source
-						const articleInfo = document.createElement('div');
-						articleInfo.classList.add('article-info');
-						// Create title container and add title
-						const articleTitle = document.createElement('a');
-						articleTitle.classList.add('article-title','title');
-						articleTitle.textContent = article.title;
-						articleTitle.target = '_blank';
-						articleTitle.href = article.url;
-						// Create source and add source name
-						const articleSource = document.createElement('p');
-						articleSource.classList.add('article-source','source');
-						articleSource.textContent = article.source.name;
-						// Create buttons container: Time Published, Share and Bookmark
-						const articleButtons = document.createElement('div');
-						articleButtons.classList.add('buttons');
-						// Create Time published and add time
-						const articleTime = document.createElement('p');
-						articleTime.classList.add('timePublished');
-						articleTime.textContent = '';
-						// Create bookmark button and add functionality
-						const articleBookmark = document.createElement('div');
-						articleBookmark.classList.add('article-buttons','bookmark');
-						articleBookmark.innerHTML = '<i class="ion-android-bookmark"></i>';
-						articleBookmark.addEventListener('click', function() {
-							const title = article.title;
-							const source = article.source.name;
-							const url = article.url;
-							if (!alreadyExists(title)) {
-								saveBookmarks(title,source,url);
-								populateBookmarks(title,source,url);
-							}
-						});
-						// Append time published, share and bookmark to buttons container
-						articleButtons.appendChild(articleTime);
-						articleButtons.appendChild(articleBookmark);
-						// Append title and source to info container
-						articleInfo.appendChild(articleTitle);
-						articleInfo.appendChild(articleSource);
-						// Append image, info and buttons to article item
-						articleItem.appendChild(articleImage);
-						articleItem.appendChild(articleInfo);
-						articleItem.appendChild(articleButtons);
-						// Append article item to articles container 
-						articlesContainer.appendChild(articleItem);
-					} else {
-						// IF IMAGE DOESN'T EXIST FOR ARTICLE
-						// Create article item  
-						const imglessArticle = document.createElement('div');
-						imglessArticle.classList.add('imageless-article');
-						// Create info container: title and source
-						const imglessInfo = document.createElement('div');
-						imglessInfo.classList.add('imageless-article-info');
-						// Create title, add title and link
-						const imglessTitle = document.createElement('a');
-						imglessTitle.classList.add('imageless-article-title','title');
-						imglessTitle.textContent = article.title;
-						imglessTitle.target = '_blank';
-						imglessTitle.href = article.url;
-						// Create source and add source
-						const imglessSource = document.createElement('p');
-						imglessSource.classList.add('imageless-article-source','source');
-						imglessSource.textContent = article.source.name;
-						// Create buttons container: Time Published, Share and Bookmark
-						const imglessButtons = document.createElement('div');
-						imglessButtons.classList.add('buttons');
-						// Create Time published and add time
-						const imglessTime = document.createElement('p');
-						imglessTime.classList.add('timePublished');
-						imglessTime.textContent = '';
-						// Create bookmark button and add functionality
-						const imglessBookmark = document.createElement('div');
-						imglessBookmark.classList.add('imageless-article-buttons','bookmark');
-						imglessBookmark.innerHTML = '<i class="ion-android-bookmark"></i>';
-						imglessBookmark.addEventListener('click', function() {
-							const title = article.title;
-							const source = article.source.name;
-							const url = article.url;
-							if (!alreadyExists(title)) {
-								saveBookmarks(title,source,url);
-								populateBookmarks(title,source,url);
-							}
-						});
-						// Append time published, share and bookmark to buttons container
-						imglessButtons.appendChild(imglessTime);
-						imglessButtons.appendChild(imglessBookmark);
-						// Append title and source to info container
-						imglessInfo.appendChild(imglessTitle);
-						imglessInfo.appendChild(imglessSource);
-						// Append info and buttons to article item
-						imglessArticle.appendChild(imglessInfo);
-						imglessArticle.appendChild(imglessButtons);
-						// Append article item to articles container
-						imglessArticles.style.border = "1px solid #ccc";
-						imglessArticles.appendChild(imglessArticle);
-					}
-					// Sets height of imageless article to content height: Fixes CSS Grid bug
-					if (imglessArticles.childElementCount > 0) {
-						let imglessArticleHeight = 0;
-						for (let i = 0; i < imglessArticles.childElementCount; i++) {
-							imglessArticleHeight += imglessArticles.children[i].offsetHeight;
+					if (article) {
+						if (article.urlToImage != null && article.source.name != "Fox News") {   
+							// IF IMAGE EXISTS FOR ARTICLE
+							// Create article item            
+							const articleItem = document.createElement('div');
+							articleItem.classList.add('article');
+							// Create image container and add image
+							const articleImage = document.createElement('div');
+							articleImage.classList.add('image');
+							articleImage.style.backgroundImage = `url('${article.urlToImage}')`;
+							// Create info container: title and source
+							const articleInfo = document.createElement('div');
+							articleInfo.classList.add('article-info');
+							// Create title container and add title
+							const articleTitle = document.createElement('a');
+							articleTitle.classList.add('article-title','title');
+							articleTitle.textContent = article.title;
+							articleTitle.target = '_blank';
+							articleTitle.href = article.url;
+							// Create source and add source name
+							const articleSource = document.createElement('p');
+							articleSource.classList.add('article-source','source');
+							articleSource.textContent = article.source.name;
+							// Create buttons container: Time Published, Share and Bookmark
+							const articleButtons = document.createElement('div');
+							articleButtons.classList.add('buttons');
+							// Create Time published and add time
+							const articleTime = document.createElement('p');
+							articleTime.classList.add('timePublished');
+							articleTime.textContent = '';
+							// Create bookmark button and add functionality
+							const articleBookmark = document.createElement('div');
+							articleBookmark.classList.add('article-buttons','bookmark');
+							articleBookmark.innerHTML = '<i data-feather="bookmark"></i>';
+
+							articleBookmark.addEventListener('click', function() {
+								const title = article.title;
+								const source = article.source.name;
+								const url = article.url;
+								if (!alreadyExists(title)) {
+									saveBookmarks(title,source,url);
+									populateBookmarks(title,source,url);
+								}
+							});
+
+							// Append time published, share and bookmark to buttons container
+							articleButtons.appendChild(articleTime);
+							articleButtons.appendChild(articleBookmark);
+							// Append title and source to info container
+							articleInfo.appendChild(articleTitle);
+							articleInfo.appendChild(articleSource);
+							// Append image, info and buttons to article item
+							articleItem.appendChild(articleImage);
+							articleItem.appendChild(articleInfo);
+							articleItem.appendChild(articleButtons);
+							// Append article item to articles container 
+							articlesContainer.appendChild(articleItem);
+						} else {
+							// IF IMAGE DOESN'T EXIST FOR ARTICLE
+							// Create article item  
+							const imglessArticle = document.createElement('div');
+							imglessArticle.classList.add('imageless-article');
+							// Create info container: title and source
+							const imglessInfo = document.createElement('div');
+							imglessInfo.classList.add('imageless-article-info');
+							// Create title, add title and link
+							const imglessTitle = document.createElement('a');
+							imglessTitle.classList.add('imageless-article-title','title');
+							imglessTitle.textContent = article.title;
+							imglessTitle.target = '_blank';
+							imglessTitle.href = article.url;
+							// Create source and add source
+							const imglessSource = document.createElement('p');
+							imglessSource.classList.add('imageless-article-source','source');
+							imglessSource.textContent = article.source.name;
+							// Create buttons container: Time Published, Share and Bookmark
+							const imglessButtons = document.createElement('div');
+							imglessButtons.classList.add('buttons');
+							// Create Time published and add time
+							const imglessTime = document.createElement('p');
+							imglessTime.classList.add('timePublished');
+							imglessTime.textContent = '';
+							// Create bookmark button and add functionality
+							const imglessBookmark = document.createElement('div');
+							imglessBookmark.classList.add('imageless-article-buttons','bookmark');
+							imglessBookmark.innerHTML = '<i data-feather="bookmark"></i>';
+
+							imglessBookmark.addEventListener('click', function() {
+								const title = article.title;
+								const source = article.source.name;
+								const url = article.url;
+								if (!alreadyExists(title)) {
+									saveBookmarks(title,source,url);
+									populateBookmarks(title,source,url);
+								}
+							});
+
+							// Append time published, share and bookmark to buttons container
+							imglessButtons.appendChild(imglessTime);
+							imglessButtons.appendChild(imglessBookmark);
+							// Append title and source to info container
+							imglessInfo.appendChild(imglessTitle);
+							imglessInfo.appendChild(imglessSource);
+							// Append info and buttons to article item
+							imglessArticle.appendChild(imglessInfo);
+							imglessArticle.appendChild(imglessButtons);
+							// Append article item to articles container
+							imglessArticles.style.border = "1px solid #ccc";
+							imglessArticles.appendChild(imglessArticle);
 						}
-						imglessArticles.style.height = `${imglessArticleHeight + 10}px`;
-						imglessArticles.style.border = `1px solid #ccc`;
-					} else {
-						imglessArticles.style.height = `0px`;
-						imglessArticles.style.border = `none`;
+						// Sets height of imageless article to content height: Fixes CSS Grid bug
+						if (imglessArticles.childElementCount > 0) {
+							let imglessArticleHeight = 0;
+							for (let i = 0; i < imglessArticles.childElementCount; i++) {
+								imglessArticleHeight += imglessArticles.children[i].offsetHeight;
+							}
+							imglessArticles.style.height = `${imglessArticleHeight + 10}px`;
+							imglessArticles.style.border = `1px solid #ccc`;
+						} else {
+							imglessArticles.style.height = `0px`;
+							imglessArticles.style.border = `none`;
+						}
+						feather.replace(); // To load icons from CDN
 					}
 				});
 				// Append all news to articles body
 				mainArticles.appendChild(articlesContainer);
+				feather.replace(); // To load icons from CDN
 			} else {
 				// Error handling
 				const errMsg = "<div style='text-align: center; margin-top: 25px;'><h2 class='ion-bug'></h2><h3>Sorry, something went wrong!</h3></div>";
@@ -444,7 +455,8 @@ function fetchNews(tagName, keyName) {
 		}
 	};
 	xhttp.open("GET", newsUrl, true);
-	xhttp.send();    
+	xhttp.send(); 
+   
 }
 
 // Fetch news on load

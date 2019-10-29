@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <!-- Ionicons -->
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <!-- Feather Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -37,7 +37,7 @@
         <div class="header">
             <!-- Button to show and hide tags -->
             <div class="show-tags">
-                <i class="ion-pricetag"></i>
+                <i data-feather="tag"></i>
             </div>
             <span class="tag-arrow"></span>
             <!-- Newsfeed logo -->
@@ -48,7 +48,7 @@
             </a>
             <!-- Bookmark button -->
             <div class="header-buttons bookmarks">
-                <i class="ion-android-bookmark"></i>
+                <i data-feather="bookmark"></i>
             </div>
         </div>
     </div>
@@ -70,6 +70,7 @@
                 <div class="weather"></div>
                 <p class="date"></p>
             </div>
+			<p class="attribution">Powered by <a href='https://newsapi.org/'>News API</a></p>
             <!-- Keys -->
             <div class="keys">
                 <div class="key" data-key="Apple">Apple</div>
@@ -108,7 +109,6 @@
                     </div>
                 </div> -->
 <!--             </div> -->
-            <p>Powered by <a href="https://newsapi.org/">News API</a></p>
         </div>
         <!-- Imageless articles -->
         <div class="imageless-articles">

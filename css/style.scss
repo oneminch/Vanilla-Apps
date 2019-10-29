@@ -322,6 +322,18 @@ body {
         padding: 10px 5px;
     }
 }
+// Attribution text to API provider
+.attribution {
+    width: 100%;
+    height: 45px;
+    color: #000;
+    font-weight: bold;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 0px auto 15px auto;
+    padding: 10px;
+}
 // Keys
 .keys {
     width: 100%;
@@ -430,6 +442,7 @@ body {
         border-radius: 5px;
         border: 1px solid #ccc;
         margin: 10px auto;
+        color: #000;
         // Each article
         .article {
             width: 90%;
