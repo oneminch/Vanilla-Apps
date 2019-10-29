@@ -11,7 +11,7 @@ const temperature = document.querySelector('.temperature');  // Temperature
 const weatherStatus = document.querySelector('.status');     // Weather Status
 const bookmarkList = document.querySelector('.bookmarks-list');      // Bookmarks container
 const bookmarkArticleBtns = document.querySelectorAll('.bookmark'); // Bookmark article
-
+const newsApiKey = '26d2244882144356bcc86715c67a7300';
 
 // Main Articles: Featured and others with image
 const mainArticles = document.querySelector('.main-articles');
@@ -238,7 +238,7 @@ function fetchNews(tagName, keyName) {
 	else
 		query = `q=${keyName}`;
    // URL to be sent 
-	const newsUrl = `https://newsapi.org/v2/top-headlines?language=en&${query}&apiKey=a9ec67b4e33840d1982d95610c5e4c45`;
+	const newsUrl = `https://newsapi.org/v2/top-headlines?language=en&${query}&apiKey=${newsApiKey}`;
 
    // Articles array
    let articles = [];
