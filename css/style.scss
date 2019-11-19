@@ -20,6 +20,31 @@
     -moz-transform: $property;
     -webkit-transform: $property;
 }
+
+// Import regular font
+@font-face {
+    font-family: 'Metropolis-Regular';
+    src: url('fonts/Metropolis-Regular.eot');
+    src: url('fonts/Metropolis-Regular.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Metropolis-Regular.woff2') format('woff2'),
+         url('fonts/Metropolis-Regular.woff') format('woff'),
+         url('fonts/Metropolis-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+ }
+ 
+ // Import bold font
+ @font-face {
+    font-family: 'Metropolis-Bold';
+    src: url('fonts/Metropolis-Bold.eot');
+    src: url('fonts/Metropolis-Bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Metropolis-Bold.woff2') format('woff2'),
+         url('fonts/Metropolis-Bold.woff') format('woff'),
+         url('fonts/Metropolis-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+ }
+
 // Every Element
 * {
     -webkit-appearance: none !important;
@@ -28,7 +53,8 @@
     -o-appearance: none !important;
     outline: none !important;
     @include transition(all 0.2s);
-    font-family: 'Quicksand', sans-serif;
+    // font-family: 'Quicksand', sans-serif;
+    font-family: 'Metropolis-Regular', sans-serif;
 }
 // Every Link
 a {
@@ -179,7 +205,8 @@ body {
         padding: 0px 10px;
         font-size: 12px;
         &:first-of-type {
-            font-weight: bolder;
+            // font-weight: bolder;
+            font-family: 'Metropolis-Bold', sans-serif;
         }
     }
 }
@@ -248,7 +275,8 @@ body {
                 display: block;
                 color: #000 !important;
                 margin: 0px 0px 5px 0px;
-                font-weight: bold;
+                // font-weight: bold;
+                font-family: 'Metropolis-Bold', sans-serif;
             }
             .bookmarked-article-source {
                 display: inline-block;
@@ -327,7 +355,8 @@ body {
     width: 100%;
     height: 45px;
     color: #000;
-    font-weight: bold;
+    // font-weight: bold;
+    font-family: 'Metropolis-Bold', sans-serif;
     background: #fff;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -470,7 +499,8 @@ body {
                     display: block;
                     color: #000 !important;
                     margin: 0px 0px 5px 0px;
-                    font-weight: bold;
+                    // font-weight: bold;
+                    font-family: 'Metropolis-Bold', sans-serif;
                 }
                 .article-source {
                     display: inline-block;
@@ -523,7 +553,8 @@ body {
                 display: block;
                 color: #000 !important;
                 margin: 0px 0px 5px 0px;
-                font-weight: bold;
+                // font-weight: bold;
+                font-family: 'Metropolis-Bold', sans-serif;
             }
             .imageless-article-source {
                 display: inline-block;
