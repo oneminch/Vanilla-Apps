@@ -484,10 +484,10 @@ tags.forEach(tag => tag.addEventListener('click', () => {
    const tagName = tag.dataset.tag;
    // Clear any current active tag property
    for (let i = 0; i < tags.length; i++) {
-      tags[i].style.fontWeight = "normal";
+      tags[i].style.fontFamily = "Metropolis-Regular";
    }
    // Assign active property to clicked tag
-   tag.style.fontWeight = "bolder";
+   tag.style.fontFamily = "Metropolis-Bold";
    // Fetch news with clicked tag name
    fetchNews(tagName,'');
 }));
