@@ -13,7 +13,7 @@ const temperature = document.querySelector('.temperature');  // Temperature
 const weatherStatus = document.querySelector('.status');     // Weather Status
 const bookmarkList = document.querySelector('.bookmarks-list');      // Bookmarks container
 const bookmarkArticleBtns = document.querySelectorAll('.bookmark'); // Bookmark article
-const newsApiKey = '26d2244882144356bcc86715c67a7300';
+const newsApiKey = '688316339086455c9607fbf083a12e7c';
 
 // Main Articles: Featured and others with image
 const mainArticles = document.querySelector('.main-articles');
