@@ -13,7 +13,9 @@ const temperature = document.querySelector(".temperature"); // Temperature
 const weatherStatus = document.querySelector(".status"); // Weather Status
 const bookmarkList = document.querySelector(".bookmarks-list"); // Bookmarks container
 const bookmarkArticleBtns = document.querySelectorAll(".bookmark"); // Bookmark article
+
 const newsApiKey = "688316339086455c9607fbf083a12e7c";
+const weatherApiKey = "2aa8b18f013fe45e5fe0e0497ad5ee91";
 
 // Main Articles: Featured and others with image
 const mainArticles = document.querySelector(".main-articles");
@@ -67,7 +69,7 @@ function success(position) {
 	weather.style.height = "60px";
 	// }
 	// API URL
-	const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=0316ea5289b94dc6efda5a732e60c201&units=metric`;
+	const url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${weatherApiKey}&units=metric`;
 	// Get Weather Data in JSON Format
 	$.getJSON(url, function (data) {
 		// Get Temperature in Celcius
