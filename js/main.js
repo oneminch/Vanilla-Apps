@@ -15,7 +15,7 @@ const bookmarkList = document.querySelector(".bookmarks-list"); // Bookmarks con
 const bookmarkArticleBtns = document.querySelectorAll(".bookmark"); // Bookmark article
 
 const newsApiKey = "688316339086455c9607fbf083a12e7c";
-const weatherApiKey = "2aa8b18f013fe45e5fe0e0497ad5ee91";
+const weatherApiKey = "3ea64c578c387dbcb25e4ef16486eed1";
 
 // Main Articles: Featured and others with image
 const mainArticles = document.querySelector(".main-articles");
