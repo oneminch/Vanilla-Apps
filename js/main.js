@@ -14,7 +14,7 @@ const weatherStatus = document.querySelector(".status"); // Weather Status
 const bookmarkList = document.querySelector(".bookmarks-list"); // Bookmarks container
 const bookmarkArticleBtns = document.querySelectorAll(".bookmark"); // Bookmark article
 
-const newsApiKey = "688316339086455c9607fbf083a12e7c";
+const newsApiKey = "a01d42f4571b4b7699fd9bd4b68fc29b";
 const weatherApiKey = "3ea64c578c387dbcb25e4ef16486eed1";
 
 // Main Articles: Featured and others with image
