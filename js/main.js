@@ -273,8 +273,8 @@ function fetchNews(tagName, keyName) {
 	if (keyName == "") query = !tagName ? "" : `country=us&category=${tagName}`;
 	else query = `q=${keyName}`;
 	// URL to be sent
-	const newsUrl = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?language=en&${query}&apiKey=${newsApiKey}`;
-
+	const newsEndpoint = `https://newsapi.org/v2/top-headlines?language=en&${query}&apiKey=${newsApiKey}`;
+	const newsUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(newsEndpoint)}`
 	// Articles array
 	let articles = [];
 
@@ -282,11 +282,12 @@ function fetchNews(tagName, keyName) {
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4) {
 			if (this.status == 200) {
-				let data = JSON.parse(this.responseText);
+				let allData = JSON.parse(this.responseText);
+				let data = JSON.parse(allData.contents);
 				// Empty article containers for new request
 				mainArticles.innerHTML = "";
 				imglessArticles.innerHTML = "";
-				console.log(data);
+				// console.log(data);
 
 				// Copy articles from response to custom array
 				for (let i = 0; i < data.totalResults; i++) {
