@@ -1,5 +1,6 @@
-# News
-A news app that uses the News API
+# Newsfeed
 
-[Go to the app](https://oneminch.dev/newsfeed)
+A vanilla JS news app that uses the News API
+
+![Screenshot](/media/screenshot.png)
 
