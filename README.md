@@ -1,6 +1,15 @@
-# Newsfeed
+# Vanilla Apps
 
-A vanilla JS news app that uses the News API
+All the projects I built using vanilla JS.
 
-![Screenshot](/media/screenshot.png)
+![Screenshot](/screenshot.png)
+
+
+- [Dolist](https://oneminch..github.io/Vanilla-Apps/Dolist)
+- [Draw](https://oneminch..github.io/Vanilla-Apps/Draw)
+- [Forecast](https://oneminch..github.io/Vanilla-Apps/Forecast)
+- [Newsfeed](https://oneminch..github.io/Vanilla-Apps/Newsfeed)
+- [Noteboard](https://oneminch..github.io/Vanilla-Apps/Noteboard)
+- [Quotee](https://oneminch..github.io/Vanilla-Apps/Quotee)
+- [Timer](https://oneminch..github.io/Vanilla-Apps/Timer)
 
